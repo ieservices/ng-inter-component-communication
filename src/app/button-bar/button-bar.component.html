@@ -1,0 +1,5 @@
+<button class="button--save" *ngIf="config.saveButton.show" (click)="persist('save')">Save</button>
+<button class="button--save" *ngIf="config.saveAndCloseButton.show" (click)="persist('saveAndClose')">Save & Close</button>
+<button class="button--cancel" *ngIf="config.cancelButton.show" (click)="cancel()">Cancel</button>
+
+{{ configName }}

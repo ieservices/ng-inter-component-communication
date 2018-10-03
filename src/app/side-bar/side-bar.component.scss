@@ -1,0 +1,33 @@
+:host {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 40%;
+  padding: 20px 10px;
+  background: #ccc;
+
+  &.is-open {
+    display: block;
+    background: green;
+  }
+
+  &.top {
+    top: 0;
+  }
+
+  &.middle {
+    top: 40%;
+  }
+
+  &.bottom {
+    top: 80%;
+    height: 20%;
+  }
+
+}
+
+
+
+
