@@ -1,7 +1,10 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ButtonBarService} from '../button-bar/button-bar.service';
 import {AppStates} from '../app.states';
 import {IButtonBarEvent} from '../button-bar/button-bar.event.interface';
+import {select, Store} from '@ngrx/store';
+import {getShowSidebar, IAppState} from '../reducers';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: './app-side-bar',
@@ -21,11 +24,16 @@ export class SideBarComponent implements OnInit {
 
   lastAction = '';
 
+  showSidebar$: Observable<any>;
+
   constructor(
+    private store: Store<IAppState>,
     private buttonBarService: ButtonBarService
   ) {
     this.buttonBarService.addConfiguration(AppStates.COMPONENT_BUTTON_BAR_CONFIG_DEFAULT);
     this.buttonBarService.addConfiguration(AppStates.COMPONENT_BUTTON_BAR_CONFIG_BRANCH);
+
+    this.showSidebar$ = this.store.pipe(select(getShowSidebar));
   }
 
   ngOnInit() {
